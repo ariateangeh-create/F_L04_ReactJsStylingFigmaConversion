@@ -1,41 +1,64 @@
-import "./Login.css";
+
+import styles from "./Login.module.css";
 import logo from "./logo.svg";
 
-export default function Login() {
-    return (
-        <div className="login">
-            {/* ---------- Left panel ---------- */}
-            <section className="left">
-                <h1 className="tagline">
-                    Need webdesign
-                    <br />
-                    for your business?
-                    <br />
-                    <strong>Design Spacee</strong>
-                    <br />
-                    will help you.
-                </h1>
+export default function Login({ onSignupClick }) {
+  return (
+    <main className={styles.login}>
+      <section className={styles.left}>
+        <h1 className={styles.tagline}>
+          Need webdesign
+          <br />
+          for your business?
+          <br />
+          <strong>Design Spacee</strong>
+          <br />
+          will help you.
+        </h1>
 
-                <img className="logo" src={logo} alt="Design Spacee logo" />
+        <img
+          className={styles.logo}
+          src={logo}
+          alt="Design Spacee logo"
+        />
 
-                <p className="link">figma.com/@designspacee</p>
-            </section>
+        <p className={styles.link}>figma.com/@designspacee</p>
+      </section>
 
-            {/* ---------- Right panel ---------- */}
-            <section className="right">
-                <div className="form">
-                    <h2>Sign-in</h2>
+      <section className={styles.right}>
+        <div className={styles.form}>
+          <h2>Sign-in</h2>
 
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
+          <form onSubmit={(event) => event.preventDefault()}>
+            <input
+              type="email"
+              placeholder="Email"
+              aria-label="Email"
+              required
+            />
 
-                    <button>Login</button>
+            <input
+              type="password"
+              placeholder="Password"
+              aria-label="Password"
+              required
+            />
 
-                    <p className="signup">
-                        Don't have an account? <a href="#">Signup Here</a>
-                    </p>
-                </div>
-            </section>
+            <button type="submit">Login</button>
+          </form>
+
+          <p className={styles.signup}>
+            Don't have an account?{" "}
+            <button
+              type="button"
+              className={styles.signupLink}
+              onClick={onSignupClick}
+            >
+              Signup Here
+            </button>
+          </p>
         </div>
-    );
+      </section>
+    </main>
+  );
 }
